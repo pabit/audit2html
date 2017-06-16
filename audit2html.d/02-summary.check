@@ -1,0 +1,5 @@
+
+
+heading Summary
+exec_command "aureport --summary" "audit summary" 
+

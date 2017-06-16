@@ -1,0 +1,5 @@
+heading "User and group management events"
+
+exec_command "aureport -m -i --success" "User and group modifications (success)"
+exec_command "aureport -m -i --failed" "User and group modifications (failed)"
+

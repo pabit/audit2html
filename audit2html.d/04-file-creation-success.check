@@ -1,0 +1,10 @@
+
+heading "Creation or access files and programs"
+
+exec_command " " "Access or creation of all files and programs (success)"
+AddText "There are no required STIG settings for this - not checking. This is accomplished by AIDE."
+
+IGNORE='(rtvscand|python|firefox|sadc|null|unset|/var/www/html/repo|gconfd-2|prelink|unlinkat|rename|gnome-pty-helper|logrotate|ldconfig|mlocate|tmp|alternatives|gnome-terminal|recently-used.xbel|/dev/shm|dbus-daemon|/home/)'
+
+exec_command "ausearch --key access | aureport -f -i --failed | egrep -v '$IGNORE'" "Access or creation all files and programs (failed)"
+

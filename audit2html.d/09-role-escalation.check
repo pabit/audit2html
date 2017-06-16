@@ -1,0 +1,7 @@
+heading "Privileged role escalation"
+
+exec_command "aureport --success -au -i | grep -w /bin/su" "su logins (success)"
+exec_command "aureport --failed -au -i | grep -w /bin/su" "su logins (failed)"
+exec_command "aureport --success -au -i | grep sudo" "sudo usage (success)"
+exec_command "aureport --failed -au -i | grep sudo" "sudo usage (failed)"
+

@@ -1,0 +1,17 @@
+heading "local accounts"
+
+#update to read /etc/passwd
+GROUPACCT=testacct
+
+DAYSNOW=$(perl 'print int(time/(60*60*24))')
+DAYSCHANGE=$(grep root /etc/shadow | awk -F: '{print $3}')
+DAYSAGO=$[[ DAYSNOW-DAYSCHANGE ]]
+EXPIRES=$(expr 60 - $DAYSAGO)
+ACCTS="
+$GROUPACCT
+root"
+for ACCT in $ACCTS; do
+	line
+	AddText "$ACCT password expires in $EXPIRES (a negative number means overdue)"  
+done
+

@@ -1,0 +1,54 @@
+=head1 NAME
+
+audit2html - supports customized audit log parsing and display through plugin check files. Output report and log based on cft2html output
+NIST 800-53A RMF compliance (DAAPM, JSIG, etc)
+
+=head1 SYNOPSIS
+
+I<audit2html.sh>
+
+=head1 DESCRIPTION
+
+audit2html is a Linux shell script based on the popular cfg2html with an almost exact output display. Audit2html was written to support audit log parsing and display in a user friendly output with a simple and easy to understand configuration file and plugins directory. Plugins are individual scripts and commands to be placed in the audit2html.d directory. See the template file for directions. Most NIST SP 800-53A Risk Management Framework required auditing are already complete in the included scripts. 
+
+Please feel free to contribute to this project by adding/modifying. 
+
+See Copying for GPLv3 License 
+ 
+=head1 FILES
+
+=over 4
+
+=item B<./audit2html.conf>
+
+Default configuration file
+
+B<./audit2html.d>
+
+Plugin Directory where checks (.check) are run
+
+
+=back
+
+=head1 BUGS
+
+If you find any bugs, please send an email to the author, or create a new
+issue at L<https://github.com/securityscripting/audit2html/issues>.
+
+=head1 AUTHORS
+
+Damian M. E<lt>audit2html@gmail.comE<gt>
+
+=head1 COPYRIGHT
+
+    cfg2html Copyright (C) Ralph Roth
+    audit2html Copyright (C) 2017 Damian Mehsling
+
+This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public #    License along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+See Copying for License
+

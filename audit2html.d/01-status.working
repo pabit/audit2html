@@ -1,0 +1,8 @@
+
+
+heading "Auditd status"
+
+exec_command "service auditd status" "Status of audit deaemon"
+
+
+

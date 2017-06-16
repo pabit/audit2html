@@ -1,0 +1,5 @@
+heading "Intrusion detection report"
+
+AddText "A new aide report should be run periodically"
+exec_command "cat /var/log/aide/aide.log" "Aide log"
+

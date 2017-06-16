@@ -1,0 +1,4 @@
+#FILEPERM_LOG=/audit/logs/
+heading "File permission checks"
+  
+exec_command "cat $FILEPERM_LOG" "File permissions log"

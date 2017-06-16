@@ -1,0 +1,11 @@
+heading "Permission and ownership modifications"
+
+
+IGNORE='(rtvscand|python|firefox|sadc|null|unset|/var/www/html/repo|gconfd-2|prelink|unlink|unlinkat|rename|gnome-pty-helper|logrotate|ldconfig|mlocate|tmp|alternatives|gnome-terminal|recently-used.xbel|/dev/shm|dbus-daemon)'
+
+exec_command "ausearch --key perm_mod | aureport -f -i --success | egrep -v '$IGNORE'" "Permission and ownership modifications (success)"
+
+IGNORE='(rtvscand|python|firefox|sadc|null|unset|/var/www/html/repo|gconfd-2|prelink|unlink|unlinkat|rename|gnome-pty-helper|logrotate|ldconfig|mlocate|tmp|alternatives|gnome-terminal|recently-used.xbel|/dev/shm|dbus-daemon)'
+
+exec_command "ausearch --key perm_mod | aureport -f -i --failed | egrep -v '$IGNORE'" "Permission and ownership modifications (failed)"
+

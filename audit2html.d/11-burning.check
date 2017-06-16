@@ -1,0 +1,15 @@
+heading "CD/DVD burning"
+
+#cd/dvd burning log files produced by running bashmount-au program
+burnlog=/var/log/k3b-burn/*.log
+
+for log in $burnlog; do
+  #echo $log
+  filedate="$(ls $log)"
+  echo "====================================" >> /var/log/k3b-burn/temp-log
+  echo $filedate  >> /var/log/k3b-burn/temp-log
+  cat $log >> /var/log/k3b-burn/temp-log 
+done
+
+exec_command "cat $temp-log" "k3b cd-dvd burning log"
+rm  /var/log/k3b-burn/temp-log

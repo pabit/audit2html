@@ -1,0 +1,18 @@
+
+
+heading "Authentication events"
+
+IGNORE='(cron|sudo)' #check sudo later
+TITLE="Successful Logins"
+exec_command "aureport --success -au -i | grep -v '$IGNORE'" "$TITLE" 
+
+TITLE="Unsuccessful Logins"
+exec_command "aureport --failed -au -i | grep -v '$IGNORE'" "$TITLE" 
+
+IGNORE='(reboot|shutdown)'
+TITLE="All logins/logoffs and time periods"
+exec_command "last -i -a | grep -v '$IGNORE'" "$TITLE" 
+
+TITLE="Unknown user login attempts"
+exec_command "lastb" "$TITLE"
+

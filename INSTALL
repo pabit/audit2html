@@ -1,0 +1,30 @@
+Dependencies
+============
+
+ * browser to read html report
+ * auditd
+ 
+
+Installation
+============
+
+1. Copy audit2html.sh and audit2html.conf to desired directory.
+
+2. Copy the audit2html.d directory to desired directory 
+
+Configuration
+=============
+
+1. Configure audit.rules per distribution directions. Default plugins configured for RHEL6 stigs.
+
+2. Create an auditors group  (ie. audit)
+
+3. Configure /etc/sudoers file and assign group to run audit2html.sh (ie. %audit ALL=(ALL) /audit/audit2html.sh)
+
+4. Configure audit2html.conf variables. Default checks will be read from audit2html.d file located in the current directory. Change the AUDIT2HTML_PLUGIN_DIR if audit2html.d is in a different directory. OUTDIR directory is the location of the reports.
+
+5. Modify/add/remove any desired .check files in audit2html.d. Renamining a file to a different extension will ignore the check. Some checks may require variables to be modified.
+
+6. If using bashmount-au for logging external media access, configure variables in media and burning checks to match those configured for bashmount-au.
+
+6. You should also set audit.rules and/or aide.conf watches on the directory where output logs are stored.

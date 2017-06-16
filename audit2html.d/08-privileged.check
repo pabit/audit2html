@@ -1,0 +1,30 @@
+#!/bin/bash
+
+heading "Use of privileged and special rights events"
+
+GROUPACCT=testacct
+exec_command "ausearch -k policy | aureport -f -i" "Security and audit policy changes"
+
+exec_command "ausearch -k logs | aureport -f -i" "Audit and security log data access"
+
+IGNORE='(/var/log/sa*|/var/log/gdm*)'
+exec_command "ausearch --key privileged | aureport -f -i | egrep -v '$IGNORE'" "Execution of privileged commands"
+exec_command "last | grep $GROUPACCT" "admin account login"
+
+if [ "`last | grep $GROUPACCT`" ]; then
+   AddText="WARNING: $GROUPACCT account has been used" 
+fi
+
+exec_command "last | grep root" "root account login"
+
+if [ "`last | grep root`" ]; then
+   AddText "WARNING: root account has been used" 
+fi
+exec_command "last -x | grep reboot" "System reboot"
+
+exec_command "last -x | grep shutdown" "System shutdown"
+
+exec_command "ausearch -k audit_network_modifications | aureport -f -i" "network modifications"
+
+exec_command "cat /var/log/cups/*" "Print to a device"
+}

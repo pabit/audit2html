@@ -1,0 +1,7 @@
+heading "Installed updates"
+
+#For complete package list change "$YUMLOG" to "rpm -qa "
+
+#update logs only
+YUMLOG=/var/log/yum.log
+exec_command "cat $YUMLOG" "Yum log"

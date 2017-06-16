@@ -1,0 +1,27 @@
+#Sample check file. A real check file must end in .check. start check file name with a number to control priority sequence.
+#TITLE variable isn't required. Example to show where the title needs to be placed after the command
+#
+#possible function calls (any or all can be used) :
+#heading "Only ONE section heading here for all checks - if desired"
+#exec_command "put your check here. all checks that fall under the heading will be indented" "now put the title for the check"
+#AddText "add any text to the output"
+#AddBold "same as above - bold"
+#Working sample starts here
+
+heading "Authentication events"
+
+#Using IGNORE to filter out unwanted events. Separate each work to filter by |
+IGNORE='(cron|sudo)' #check sudo in another check
+TITLE="Successful Logins"
+exec_command "aureport --success -au -i | grep -v '$IGNORE'" "$TITLE" 
+
+TITLE="Unsuccessful Logins"
+exec_command "aureport --failed -au -i | grep -v '$IGNORE'" "$TITLE" 
+
+IGNORE='(reboot|shutdown)'
+TITLE="All logins/logoffs and time periods"
+exec_command "last -i -a | grep -v '$IGNORE'" "$TITLE" 
+
+TITLE="Unknown user login attempts"
+exec_command "lastb" "$TITLE"
+

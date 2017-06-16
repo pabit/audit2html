@@ -1,0 +1,18 @@
+heading "Data transfers to/from devices/digital media"
+#log file created by bashmount-au program
+DTA_LOG=/var/log/dta.log
+
+#configure audit.rules for specific directory mountpoint watch. EXAMPLES not used
+#IGNORE='(/bin/ls|updatedb|rtvscand)'
+#exec_command "ausearch -k usb | aureport -f -i --success | egrep -v '$IGNORE'" "Exports/writes/downloads to USB devices (success)"
+#exec_command "ausearch -k usb | aureport -f -i --failed | egrep -v '$IGNORE'" "Exports/writes/downloads to CD/DVD (failed)"
+#exec_command "ausearch -f /mnt/usbdisk | aureport -f -i --success | egrep -v '$IGNORE'" "Imports/Uploads from USB devices(success)"
+#exec_command "ausearch -f /mnt/cdrom | aureport -f -i --failed | egrep -v '$IGNORE'" "Imports/Uploads from  CD/DVD (failed)"
+
+#custom log file from bashmount-au program
+  if [ -f $DTA_LOG ]; then
+     exec_command "cat $DTA_LOG" "Data Transfer Information"
+  else
+     break
+  fi
+

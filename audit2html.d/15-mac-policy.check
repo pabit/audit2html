@@ -1,0 +1,2 @@
+heading "MAC policy"
+exec_command "ausearch -k MAC-policy | aureport -f -i" "Mandatory Access Control"

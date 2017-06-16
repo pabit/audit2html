@@ -1,0 +1,4 @@
+heading "Full text auditing"
+
+#option full text auditing if configured in pam
+exec_command "aureport --tty" "Full text auditing"
